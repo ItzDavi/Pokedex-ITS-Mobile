@@ -12,5 +12,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        var intent = Intent(this, PokemonDetailActivity::class.java)
+        startActivity(intent)
     }
 }
