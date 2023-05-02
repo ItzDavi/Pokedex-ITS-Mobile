@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Pokédex</string>
+
+    <string name="first_generation">RED, BLUE, YELLOW</string>
+    <string name="second_generation">GOLD, SILVER, CRYSTAL</string>
+    <string name="third_generation">RUBY, SAPPHIRE, EMERALD</string>
+    <string name="fourth_generation">PLATINUM</string>
+    <string name="fifth_generation">BLACK, WHITE</string>
+    <string name="sixth_generation">X, Y</string>
+    <string name="seventh_generation">SUN, MOON</string>
 </resources>
