@@ -4,5 +4,5 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class PokemonViewModel : ViewModel(){
-    val pokemon = MutableLiveData<Pokemon>()
+    var pokemon = MutableLiveData<Pokemon>()
 }

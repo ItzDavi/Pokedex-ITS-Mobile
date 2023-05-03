@@ -1,8 +1,11 @@
 package com.itsmobile.pokedex
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
+import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
@@ -22,6 +25,7 @@ import com.itsmobile.pokedex.model.pokemon.StatInside
 class PokemonDetailActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityPokemonDetailBinding
+    val viewModel : PokemonViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPokemonDetailBinding.inflate(layoutInflater)
@@ -31,13 +35,13 @@ class PokemonDetailActivity : AppCompatActivity() {
 
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.fragmentView, PokemonDetailFragment.newInstance("https://pokeapi.co/api/v2/pokemon-species/151"))
+            .replace(R.id.fragmentView, LoadingFragment.newInstance("", ""))
             .commit()
 
         binding.location.setOnClickListener {
             supportFragmentManager
                 .beginTransaction()
-                .replace(R.id.fragmentView, PokemonDetailFragment.newInstance("https://pokeapi.co/api/v2/pokemon-species/151"))
+                .replace(R.id.fragmentView, PokemonDetailFragment.newInstance())
                 .commit()
         }
 
@@ -77,9 +81,14 @@ class PokemonDetailActivity : AppCompatActivity() {
             url,
             null,
             { response ->
-                // resultText.text = response.get("name").toString()
-                // binding.pokemonNameText.text = response.getString("name")
                 val pokemon = Gson().fromJson(response.toString(), Pokemon::class.java)
+
+                viewModel.pokemon.value = pokemon
+
+                supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.fragmentView, PokemonDetailFragment.newInstance())
+                    .commit()
             },
             { error ->
                 Log.d("errore", error.message.toString())

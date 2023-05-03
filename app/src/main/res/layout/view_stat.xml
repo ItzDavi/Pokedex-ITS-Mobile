@@ -12,6 +12,7 @@
         android:textColor="#201A19"
         android:textAllCaps="true"
         android:textSize="16dp"
+        android:fontFamily="@font/poppins_medium"
         android:textStyle="bold"
         android:maxWidth="100dp"
         android:layout_weight="25"
@@ -24,6 +25,7 @@
         android:layout_height="wrap_content"
         android:text="80"
         android:textSize="16dp"
+        android:fontFamily="@font/poppins_regular"
         android:layout_weight="25"
         android:textAlignment="center"
         />
