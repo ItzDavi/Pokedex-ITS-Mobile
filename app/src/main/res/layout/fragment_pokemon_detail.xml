@@ -28,10 +28,11 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/pokemonName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="placeholder"
+            android:textStyle="bold"
             android:textAllCaps="true"
             android:textColor="#201A19"
             android:textSize="24dp"
@@ -44,9 +45,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            app:layout_constraintEnd_toEndOf="@+id/textView"
-            app:layout_constraintStart_toStartOf="@+id/textView"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintEnd_toEndOf="@+id/pokemonName"
+            app:layout_constraintStart_toStartOf="@+id/pokemonName"
+            app:layout_constraintTop_toBottomOf="@+id/pokemonName" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -70,7 +71,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-
+            <!--
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -150,7 +151,7 @@
                     android:textColor="#201A19"
                     android:textSize="16dp" />
             </LinearLayout>
-
+            -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -170,11 +171,80 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="CHARATERISTICS"
+                android:text="CHARACTERISTICS"
                 android:textAllCaps="true"
                 android:textColor="#201A19"
                 android:textSize="20dp"
                 android:textStyle="bold" />
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="WEIGHT"
+                    android:textColor="#201A19"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    android:layout_weight="50"
+                    />
+                <TextView
+                    android:id="@+id/weight"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="1000 kg"
+                    android:textColor="#201A19"
+                    android:textSize="16dp"
+                    android:layout_weight="50"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="HEIGHT"
+                    android:textColor="#201A19"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    android:layout_weight="1"
+                    />
+                <TextView
+                    android:id="@+id/height"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="50 m"
+                    android:textColor="#201A19"
+                    android:textSize="16dp"
+                    android:layout_weight="1"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="BASE EXPERIENCE"
+                    android:textColor="#201A19"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    android:layout_weight="1"
+                    />
+                <TextView
+                    android:id="@+id/baseExperience"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="300"
+                    android:textColor="#201A19"
+                    android:textSize="16dp"
+                    android:layout_weight="1"
+                    />
+            </LinearLayout>
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

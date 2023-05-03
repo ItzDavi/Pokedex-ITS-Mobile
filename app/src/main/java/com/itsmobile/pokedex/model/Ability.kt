@@ -1,4 +1,6 @@
 package com.itsmobile.pokedex.model
 
-class Ability(var title: String, var description: String) {
+import com.itsmobile.pokedex.model.pokemon.AbilityInside
+
+class Ability(val ability: AbilityInside) {
 }

@@ -26,18 +26,18 @@ class StatAdapter(private val stats: ArrayList<Stat>) : RecyclerView.Adapter<Sta
         val stat = stats[position]
 
 
-        holder.view.findViewById<TextView>(R.id.name).text = stat.name
-        holder.view.findViewById<TextView>(R.id.value).text = stat.value.toInt().toString()
+        holder.view.findViewById<TextView>(R.id.name).text = stat.stat.name
+        holder.view.findViewById<TextView>(R.id.value).text = stat.base_stat.toInt().toString()
 
-        var maxStat = 300
+        var maxStat = 150
 
         if(position == stats.size - 1){
             maxStat = 700
         }
 
         var widthBarOutside = holder.view.findViewById<ConstraintLayout>(R.id.barOutside).layoutParams.width
-
-        holder.view.findViewById<View>(R.id.barInside).layoutParams.width = ((stat.value / maxStat) * widthBarOutside).toInt()
+        var widthBarInside = ((stat.base_stat / maxStat) * widthBarOutside).toInt() * 3
+        holder.view.findViewById<View>(R.id.barInside).layoutParams.width = widthBarInside
 
     }
 

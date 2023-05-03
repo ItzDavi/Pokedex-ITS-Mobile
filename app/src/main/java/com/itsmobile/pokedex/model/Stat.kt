@@ -1,3 +1,5 @@
 package com.itsmobile.pokedex.model
 
-class Stat(var name: String, var value: Double)
+import com.itsmobile.pokedex.model.pokemon.StatInside
+
+class Stat(val base_stat: Double, val stat: StatInside)
