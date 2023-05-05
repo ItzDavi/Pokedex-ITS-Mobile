@@ -26,7 +26,16 @@ class StatAdapter(private val stats: ArrayList<Stat>) : RecyclerView.Adapter<Sta
         val stat = stats[position]
 
 
-        holder.view.findViewById<TextView>(R.id.name).text = stat.stat.name
+        when(stat.stat.name){
+            "hp" -> holder.view.findViewById<TextView>(R.id.name).text = "HP"
+            "attack" -> holder.view.findViewById<TextView>(R.id.name).text = "ATK"
+            "defense" -> holder.view.findViewById<TextView>(R.id.name).text = "DEF"
+            "special-attack" -> holder.view.findViewById<TextView>(R.id.name).text = "SATK"
+            "special-defense" -> holder.view.findViewById<TextView>(R.id.name).text = "SDEF"
+            "speed" -> holder.view.findViewById<TextView>(R.id.name).text = "SPD"
+            "tot" -> holder.view.findViewById<TextView>(R.id.name).text = "TOT"
+        }
+
         holder.view.findViewById<TextView>(R.id.value).text = stat.base_stat.toInt().toString()
 
         var maxStat = 150

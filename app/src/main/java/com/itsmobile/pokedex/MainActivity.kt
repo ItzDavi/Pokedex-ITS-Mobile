@@ -1,5 +1,6 @@
 package com.itsmobile.pokedex
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -15,50 +16,13 @@ class MainActivity : AppCompatActivity() {
 
         var intent = Intent(this, PokemonDetailActivity::class.java)
         startActivity(intent)
-        /*
-        var grass = LinkedHashMap<String, ArrayList<String>>();
 
-        grass["quadruple_damage_from"] = ArrayList<String>()
+        val sharedPref = this.getPreferences(Context.MODE_PRIVATE)
 
-        grass["double_damage_from"] = ArrayList<String>()
-
-        grass["double_damage_from"]?.add("flying")
-        grass["double_damage_from"]?.add("poison")
-        grass["double_damage_from"]?.add("bug")
-        grass["double_damage_from"]?.add("fire")
-        grass["double_damage_from"]?.add("ice")
-
-        grass["neutral"] = ArrayList<String>()
-
-        grass["half_damage_from"] = ArrayList<String>()
-
-        grass["half_damage_from"]?.add("ground")
-        grass["half_damage_from"]?.add("water")
-        grass["half_damage_from"]?.add("grass")
-        grass["half_damage_from"]?.add("electric")
-
-        grass["quarter_damage_from"] = ArrayList<String>()
-
-        // type1["no_damage_from"] = ArrayList<String>()
-
-        var poison = LinkedHashMap<String, ArrayList<String>>();
-
-        poison["double_damage_from"] = ArrayList<String>()
-
-        poison["double_damage_from"]?.add("ground")
-        poison["double_damage_from"]?.add("psychic")
-
-        poison["half_damage_from"] = ArrayList<String>()
-
-        poison["half_damage_from"]?.add("fighting")
-        poison["half_damage_from"]?.add("poison")
-        poison["half_damage_from"]?.add("bug")
-        poison["half_damage_from"]?.add("grass")
-        poison["half_damage_from"]?.add("fairy")
-
-        var doubleType = newType(grass, poison)
-
-        */
+        with (sharedPref.edit()) {
+            putString("version", "red-blue")
+            apply()
+        }
     }
 
     private fun newType(grass : LinkedHashMap<String, ArrayList<String>>, poison : LinkedHashMap<String, ArrayList<String>>) : LinkedHashMap<String, ArrayList<String>>{

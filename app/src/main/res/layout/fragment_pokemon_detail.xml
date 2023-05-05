@@ -3,12 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    tools:context=".fragment.PokemonDetailFragment">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="@color/background"
-        tools:context=".PokemonDetailFragment">
+        >
         <View
             android:id="@+id/view"
             android:layout_width="match_parent"
@@ -36,7 +37,7 @@
             android:textStyle="bold"
             android:textAllCaps="true"
             android:textColor="#201A19"
-            android:textSize="24dp"
+            android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="@+id/pokemonImageView"
             app:layout_constraintStart_toStartOf="@+id/pokemonImageView"
             app:layout_constraintTop_toBottomOf="@+id/pokemonImageView" />
@@ -60,11 +61,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="STATS"
+                android:text="@string/stats"
                 android:fontFamily="@font/poppins_semibold"
                 android:textAllCaps="true"
                 android:textColor="#201A19"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
 
@@ -159,11 +160,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="ABILITY"
+                android:text="@string/ability"
                 android:fontFamily="@font/poppins_semibold"
                 android:textAllCaps="true"
                 android:textColor="#201A19"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -175,11 +176,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="CHARACTERISTICS"
+                android:text="@string/characteristics"
                 android:fontFamily="@font/poppins_semibold"
                 android:textAllCaps="true"
                 android:textColor="#201A19"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
             <LinearLayout
                 android:layout_marginTop="20dp"
@@ -188,10 +189,10 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="WEIGHT"
+                    android:text="@string/weight"
                     android:fontFamily="@font/poppins_medium"
                     android:textColor="#201A19"
-                    android:textSize="16dp"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     android:layout_weight="50"
                     />
@@ -202,7 +203,7 @@
                     android:layout_height="wrap_content"
                     android:text="1000 kg"
                     android:textColor="#201A19"
-                    android:textSize="16dp"
+                    android:textSize="16sp"
                     android:layout_weight="50"
                     />
             </LinearLayout>
@@ -213,10 +214,10 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="HEIGHT"
+                    android:text="@string/height"
                     android:fontFamily="@font/poppins_medium"
                     android:textColor="#201A19"
-                    android:textSize="16dp"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     android:layout_weight="1"
                     />
@@ -227,7 +228,7 @@
                     android:text="50 m"
                     android:fontFamily="@font/poppins_regular"
                     android:textColor="#201A19"
-                    android:textSize="16dp"
+                    android:textSize="16sp"
                     android:layout_weight="1"
                     />
             </LinearLayout>
@@ -238,10 +239,10 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="BASE EXPERIENCE"
+                    android:text="@string/base_experience"
                     android:fontFamily="@font/poppins_medium"
                     android:textColor="#201A19"
-                    android:textSize="16dp"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     android:layout_weight="1"
                     />
@@ -252,7 +253,7 @@
                     android:text="300"
                     android:fontFamily="@font/poppins_regular"
                     android:textColor="#201A19"
-                    android:textSize="16dp"
+                    android:textSize="16sp"
                     android:layout_weight="1"
                     />
             </LinearLayout>

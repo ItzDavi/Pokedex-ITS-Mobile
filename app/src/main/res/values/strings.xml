@@ -10,4 +10,11 @@
     <string name="seventh_generation">SUN, MOON</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="stats">STATS</string>
+    <string name="characteristics">CHARACTERISTICS</string>
+    <string name="ability">ABILITY</string>
+    <string name="weight">WEIGHT</string>
+    <string name="height">HEIGHT</string>
+    <string name="base_experience">BASE EXPERIENCE</string>
+    <string name="location">LOCATION</string>
 </resources>

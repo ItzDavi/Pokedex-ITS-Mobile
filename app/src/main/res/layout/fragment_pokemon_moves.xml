@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".fragment.PokemonMovesFragment">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="@color/background"
+        android:layout_width="match_parent"
+        android:padding="20dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/onBackground"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="32sp"
+            android:text="MOVES"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/onBackground"
+            android:fontFamily="@font/poppins_semibold"
+            android:layout_marginVertical="10dp"
+            android:textSize="24sp"
+            android:text="By Level"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/byLevelRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/onBackground"
+            android:fontFamily="@font/poppins_semibold"
+            android:textSize="24sp"
+            android:layout_marginVertical="10dp"
+            android:text="By Machines"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/byMachinesRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/byEggsTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/onBackground"
+            android:fontFamily="@font/poppins_semibold"
+            android:textSize="24sp"
+            android:layout_marginVertical="10dp"
+            android:text="By Egg"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/byEggsRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+</ScrollView>

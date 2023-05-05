@@ -1,28 +1,20 @@
-package com.itsmobile.pokedex
+package com.itsmobile.pokedex.fragment
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.android.volley.Request
-import com.android.volley.toolbox.JsonObjectRequest
-import com.android.volley.toolbox.Volley
 import com.bumptech.glide.Glide
-import com.google.gson.Gson
+import com.itsmobile.pokedex.R
 import com.itsmobile.pokedex.adapter.AbilityAdapter
 import com.itsmobile.pokedex.adapter.TypeAdapter
 import com.itsmobile.pokedex.adapter.StatAdapter
 import com.itsmobile.pokedex.databinding.FragmentPokemonDetailBinding
-import com.itsmobile.pokedex.model.Ability
 import com.itsmobile.pokedex.model.Stat
-import com.itsmobile.pokedex.model.Type
-import com.itsmobile.pokedex.model.pokemon.Pokemon
 import com.itsmobile.pokedex.model.pokemon.PokemonViewModel
 import com.itsmobile.pokedex.model.pokemon.StatInside
 
@@ -55,7 +47,6 @@ class PokemonDetailFragment : Fragment() {
 
         pokemonModel.pokemon.observe(viewLifecycleOwner){ pokemon ->
             Glide.with(this).load(pokemon.sprites.front_default).into(binding.pokemonImageView)
-
             binding.pokemonName.text = pokemon.name.uppercase()
             binding.weight.text = pokemon.weight.toString()
             binding.height.text = pokemon.height.toString()
