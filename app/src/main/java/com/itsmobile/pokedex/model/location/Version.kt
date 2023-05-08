@@ -1,4 +1,6 @@
 package com.itsmobile.pokedex.model.location
 
-class Version(val name: String) {
-}
+data class Version(
+    val name: String,
+    val url: String
+)

@@ -1,4 +1,6 @@
 package com.itsmobile.pokedex.model.location
 
-class Method(val name: String) {
-}
+data class Method(
+    val name: String,
+    val url: String
+)

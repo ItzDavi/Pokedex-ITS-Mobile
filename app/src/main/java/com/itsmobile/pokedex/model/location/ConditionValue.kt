@@ -1,6 +1,6 @@
 package com.itsmobile.pokedex.model.location
 
-data class LocationArea(
+data class ConditionValue(
     val name: String,
     val url: String
 )

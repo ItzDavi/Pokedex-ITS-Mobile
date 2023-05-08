@@ -40,7 +40,6 @@ class PokemonMovesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         pokemonModel.pokemon.observe(viewLifecycleOwner){ pokemon ->
-
             binding.byLevelRecycler.apply {
                 adapter = MoveAdapter(pokemon.getFilteredMoves("level-up"), "level-up")
                 layoutManager = LinearLayoutManager(requireView().context, LinearLayoutManager.VERTICAL, false)

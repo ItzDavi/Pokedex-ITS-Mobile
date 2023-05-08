@@ -8,22 +8,19 @@
 
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/route"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Gift"
+        android:text="Route 26"
         android:textColor="@color/onBackground"
         android:fontFamily="@font/poppins_semibold"
         android:textSize="18sp"
+        android:layout_marginBottom="20dp"
         />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="100% - Lv 10~15"
-        android:textColor="@color/onBackground"
-        android:fontFamily="@font/poppins_regular"
-        android:textSize="18sp"
-        />
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 
 </LinearLayout>

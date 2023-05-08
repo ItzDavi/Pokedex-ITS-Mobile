@@ -52,13 +52,15 @@ class PokemonDetailFragment : Fragment() {
             binding.height.text = pokemon.height.toString()
             binding.baseExperience.text = pokemon.base_experience.toString()
 
-            var tot: Double = 0.0
+            if(pokemon.stats.size < 7){
+                var tot: Double = 0.0
 
-            for(stat in pokemon.stats){
-                tot += stat.base_stat
+                for(stat in pokemon.stats){
+                    tot += stat.base_stat
+                }
+
+                pokemon.stats.add(Stat(tot, StatInside("tot")))
             }
-
-            pokemon.stats.add(Stat(tot, StatInside("tot")))
 
             val statRecycler = binding.statsRecycler
 

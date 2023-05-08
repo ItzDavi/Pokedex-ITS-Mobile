@@ -1,30 +1,29 @@
 package com.itsmobile.pokedex.fragment
 
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.itsmobile.pokedex.R
-import com.itsmobile.pokedex.adapter.LocationAdapter
+import com.itsmobile.pokedex.adapter.EvolutionAdapter
+import com.itsmobile.pokedex.adapter.StatAdapter
 import com.itsmobile.pokedex.databinding.FragmentPokemonEvolutionBinding
-import com.itsmobile.pokedex.databinding.FragmentPokemonLocationBinding
-import com.itsmobile.pokedex.model.location.LocationViewModel
+import com.itsmobile.pokedex.databinding.FragmentPokemonMovesBinding
+import com.itsmobile.pokedex.model.evolution.EvolutionViewModel
 import com.itsmobile.pokedex.model.pokemon.PokemonViewModel
 
-class PokemonLocationFragment : Fragment() {
+class PokemonEvolutionFragment : Fragment() {
+    // TODO: Rename and change types of parameters
 
-    private val locationModel : LocationViewModel by activityViewModels()
-    private var _binding: FragmentPokemonLocationBinding? = null
+    private val evolutionModel : EvolutionViewModel by activityViewModels()
+    private var _binding: FragmentPokemonEvolutionBinding? = null
     private val binding get() = _binding!!
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-        }
     }
 
     override fun onCreateView(
@@ -32,25 +31,27 @@ class PokemonLocationFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentPokemonLocationBinding.inflate(inflater, container, false)
+        _binding = FragmentPokemonEvolutionBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        locationModel.locations.observe(viewLifecycleOwner){ locations ->
-            binding.locations.apply {
-                adapter = LocationAdapter(locations)
+        evolutionModel.evolution.observe(viewLifecycleOwner){ evolutions ->
+            binding.evolutionRecycler.apply {
+                adapter = EvolutionAdapter(evolutions)
                 layoutManager = LinearLayoutManager(requireView().context, LinearLayoutManager.VERTICAL, false)
             }
         }
     }
+
     companion object {
         @JvmStatic
         fun newInstance() =
-            PokemonLocationFragment().apply {
+            PokemonEvolutionFragment().apply {
                 arguments = Bundle().apply {
+
                 }
             }
     }
