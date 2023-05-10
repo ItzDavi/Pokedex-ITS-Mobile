@@ -17,11 +17,10 @@ class MainActivity : AppCompatActivity() {
         var intent = Intent(this, PokemonDetailActivity::class.java)
         startActivity(intent)
 
-        val sharedPref = this.getPreferences(Context.MODE_PRIVATE)
+        val sharedPref = this.getSharedPreferences("myPref", Context.MODE_PRIVATE)
+        val myEdit = sharedPref.edit()
+        myEdit.putString("version", "red-blue")
+        myEdit.apply()
 
-        with (sharedPref.edit()) {
-            putString("version", "red-blue")
-            apply()
-        }
     }
 }

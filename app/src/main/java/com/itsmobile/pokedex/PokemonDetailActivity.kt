@@ -1,13 +1,17 @@
 package com.itsmobile.pokedex
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
 import com.android.volley.Request
+import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
+import com.google.gson.JsonArray
+import com.google.gson.reflect.TypeToken
 import com.itsmobile.pokedex.databinding.ActivityPokemonDetailBinding
 import com.itsmobile.pokedex.fragment.*
 import com.itsmobile.pokedex.model.evolution.Evolution
@@ -15,8 +19,10 @@ import com.itsmobile.pokedex.model.evolution.EvolutionViewModel
 import com.itsmobile.pokedex.model.evolution.EvolvesTo
 import com.itsmobile.pokedex.model.location.LocationViewModel
 import com.itsmobile.pokedex.model.location.Locations
+import com.itsmobile.pokedex.model.location.LocationsItem
 import com.itsmobile.pokedex.model.pokemon.Pokemon
 import com.itsmobile.pokedex.model.pokemon.PokemonViewModel
+import org.json.JSONArray
 
 class PokemonDetailActivity : AppCompatActivity() {
 
@@ -34,7 +40,7 @@ class PokemonDetailActivity : AppCompatActivity() {
             .add(R.id.fragmentView, LoadingFragment.newInstance())
             .commit()
 
-        getPokemonSpecies("https://pokeapi.co/api/v2/pokemon-species/abra")
+        getPokemonSpecies("https://pokeapi.co/api/v2/pokemon-species/rayquaza")
 
         binding.info.setOnClickListener {
             supportFragmentManager
@@ -94,7 +100,7 @@ class PokemonDetailActivity : AppCompatActivity() {
             { response ->
                 val pokemon = Gson().fromJson(response.toString(), Pokemon::class.java)
                 viewModel.pokemon.value = pokemon
-                // getLocation(response.getString("location_area_encounters"))
+                getLocation(response.getString("location_area_encounters"))
                 supportFragmentManager
                     .beginTransaction()
                     .replace(R.id.fragmentView, PokemonDetailFragment.newInstance())
@@ -111,14 +117,21 @@ class PokemonDetailActivity : AppCompatActivity() {
     private fun getLocation(url: String){
         val queue = Volley.newRequestQueue(this)
 
-        val jsonRequest = JsonObjectRequest(
+        val jsonRequest = JsonArrayRequest(
             Request.Method.GET,
             url,
             null,
             { response ->
-                var locations = Gson().fromJson(response.toString(), Locations::class.java)
 
-                locationsViewModel.locations.value = locations.getLocationFilteredByVersion()
+                val sharedPref = this.getSharedPreferences("myPref", Context.MODE_PRIVATE)
+                var version = sharedPref.getString("version", "")
+
+                var locations = version?.let { version ->
+                    Gson().fromJson(response.toString(), Locations::class.java).getLocationFilteredByVersion(version)
+                }
+
+                locationsViewModel.locations.value = locations
+
             },
             { error ->
                 Log.e("errore", error.message.toString())

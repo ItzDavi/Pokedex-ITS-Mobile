@@ -5,14 +5,14 @@ import com.itsmobile.pokedex.model.Stat
 import com.itsmobile.pokedex.model.Type
 
 class Pokemon(var moves: ArrayList<MoveVersion>, var base_experience: Int, var name: String, var stats: ArrayList<Stat>, val sprites: Sprite, val abilities: ArrayList<Ability>, val weight: Int, val height: Int, val types: ArrayList<TypeOutside>) {
-    private fun filterMovesByGeneration() : ArrayList<MoveVersion>{
+    private fun filterMovesByGeneration(gameVersion: String) : ArrayList<MoveVersion>{
 
         var movesFiltered = ArrayList<MoveVersion>()
         moves.let {
             moves.forEachIndexed{ i, move ->
                 move.version_group_details.let {
                     move.version_group_details.forEachIndexed { index, version ->
-                        if(version.version_group.name == "red-blue"){
+                        if(version.version_group.name == gameVersion){
                             val versionGroup = ArrayList<VersionGroupDetail>()
                             versionGroup.add(version)
                             movesFiltered.add(MoveVersion(move.move, versionGroup))
@@ -25,8 +25,8 @@ class Pokemon(var moves: ArrayList<MoveVersion>, var base_experience: Int, var n
         }
     }
 
-    fun getFilteredMoves(method: String) : ArrayList<MoveVersion>{
-        var movesFiltered = filterMovesByGeneration()
+    fun getFilteredMoves(method: String, version: String) : ArrayList<MoveVersion>{
+        var movesFiltered = filterMovesByGeneration(version)
 
         var movesLevel = ArrayList<MoveVersion>()
 

@@ -1,5 +1,6 @@
 package com.itsmobile.pokedex.fragment
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -39,20 +40,23 @@ class PokemonMovesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val sharedPref = view.context.getSharedPreferences("myPref", Context.MODE_PRIVATE)
+        var version = sharedPref.getString("version", "")
+
         pokemonModel.pokemon.observe(viewLifecycleOwner){ pokemon ->
             binding.byLevelRecycler.apply {
-                adapter = MoveAdapter(pokemon.getFilteredMoves("level-up"), "level-up")
+                adapter = MoveAdapter(pokemon.getFilteredMoves("level-up", version ?: ""), "level-up")
                 layoutManager = LinearLayoutManager(requireView().context, LinearLayoutManager.VERTICAL, false)
             }
 
             binding.byMachinesRecycler.apply {
-                adapter = MoveAdapter(pokemon.getFilteredMoves("machine"), "machine")
+                adapter = MoveAdapter(pokemon.getFilteredMoves("machine", version ?: ""), "machine")
                 layoutManager = LinearLayoutManager(requireView().context, LinearLayoutManager.VERTICAL, false)
             }
 
-            if(pokemon.getFilteredMoves("egg").size > 0){
+            if(pokemon.getFilteredMoves("egg", version ?: "").size > 0){
                 binding.byEggsRecycler.apply {
-                    adapter = MoveAdapter(pokemon.getFilteredMoves("egg"), "egg")
+                    adapter = MoveAdapter(pokemon.getFilteredMoves("egg", version ?: ""), "egg")
                     layoutManager = LinearLayoutManager(requireView().context, LinearLayoutManager.VERTICAL, false)
                 }
             }else{
