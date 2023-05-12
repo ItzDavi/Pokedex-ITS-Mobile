@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.itsmobile.pokedex.R
+import com.itsmobile.pokedex.TypeCalculator
 import com.itsmobile.pokedex.adapter.AbilityAdapter
 import com.itsmobile.pokedex.adapter.TypeAdapter
 import com.itsmobile.pokedex.adapter.StatAdapter
@@ -17,6 +18,7 @@ import com.itsmobile.pokedex.databinding.FragmentPokemonDetailBinding
 import com.itsmobile.pokedex.model.Stat
 import com.itsmobile.pokedex.model.pokemon.PokemonViewModel
 import com.itsmobile.pokedex.model.pokemon.StatInside
+import com.itsmobile.pokedex.model.pokemon.TypeOutside
 
 
 class PokemonDetailFragment : Fragment() {
@@ -90,6 +92,30 @@ class PokemonDetailFragment : Fragment() {
                 adapter = typeAdapter
                 layoutManager = LinearLayoutManager(requireView().context, LinearLayoutManager.HORIZONTAL, false)
             }
+
+            if(pokemon.types.size == 1){
+                val (weaknesses, resistances) = TypeCalculator.convertPokemonTypeToTypeOutside(pokemon.types[0].type.name)
+                binding.resistancesRecycler.apply{
+                    adapter = TypeAdapter(resistances)
+                    layoutManager = LinearLayoutManager(requireView().context, LinearLayoutManager.HORIZONTAL, false)
+                }
+                binding.weaknessRecycler.apply{
+                    adapter = TypeAdapter(weaknesses)
+                    layoutManager = LinearLayoutManager(requireView().context, LinearLayoutManager.HORIZONTAL, false)
+                }
+            }else{
+                val (weaknesses, resistances) = TypeCalculator.calculateWeaknessesAndResistances(pokemon.types[0].type.name, pokemon.types[1].type.name)
+                binding.resistancesRecycler.apply{
+                    adapter = TypeAdapter(resistances)
+                    layoutManager = LinearLayoutManager(requireView().context, LinearLayoutManager.HORIZONTAL, false)
+                }
+                binding.weaknessRecycler.apply{
+                    adapter = TypeAdapter(weaknesses)
+                    layoutManager = LinearLayoutManager(requireView().context, LinearLayoutManager.HORIZONTAL, false)
+                }
+            }
+
+
         }
 
     }

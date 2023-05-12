@@ -29,7 +29,7 @@ class TypeAdapter(var types: ArrayList<TypeOutside>): RecyclerView.Adapter<TypeA
         val type = types[position].type
 
         holder.view.findViewById<TextView>(R.id.name).text = type.name
-        holder.view.findViewById<ConstraintLayout>(R.id.container).setBackgroundColor(Color.parseColor(getColor(type.name)))
+        holder.view.findViewById<ConstraintLayout>(R.id.container).setBackgroundColor(Color.parseColor(getColor(type.name.uppercase())))
     }
 
     override fun getItemCount(): Int = types.size
@@ -37,24 +37,24 @@ class TypeAdapter(var types: ArrayList<TypeOutside>): RecyclerView.Adapter<TypeA
     private fun getColor(name: String): String {
         var color = "#FF0000";
         when (name){
-            "poison" -> color = "#784CD7"
-            "grass" -> color = "#00FF00"
-            "psychic" -> color = "#ff5498"
-            "normal" -> color = "#abab99"
-            "fire" -> color = "#fe4522"
-            "water" -> color = "#3399ff"
-            "electric" -> color = "#fecd33"
-            "ice" -> color = "#66cdfe"
-            "fighting" -> color = "#ba5545"
-            "ground" -> color = "#dcbc54"
-            "flying" -> color = "#8899ff"
-            "bug" -> color = "#abbb22"
-            "rock" -> color = "#baaa67"
-            "ghost" -> color = "#6767bb"
-            "dragon" -> color = "#7666ef"
-            "dark" -> color = "#775445"
-            "steel" -> color = "#a8aaba"
-            "fairy" -> color = "#ee98ef"
+            "POISON" -> color = "#784CD7"
+            "GRASS" -> color = "#00FF00"
+            "PSYCHIC" -> color = "#ff5498"
+            "NORMAL" -> color = "#abab99"
+            "FIRE" -> color = "#fe4522"
+            "WATER" -> color = "#3399ff"
+            "ELECTRIC" -> color = "#fecd33"
+            "ICE" -> color = "#66cdfe"
+            "FIGHTING" -> color = "#ba5545"
+            "GROUND" -> color = "#dcbc54"
+            "FLYING" -> color = "#8899ff"
+            "BUG" -> color = "#abbb22"
+            "ROCK" -> color = "#baaa67"
+            "GHOST" -> color = "#6767bb"
+            "DRAGON" -> color = "#7666ef"
+            "DARK" -> color = "#775445"
+            "STEEL" -> color = "#a8aaba"
+            "FAIRY" -> color = "#ee98ef"
         }
 
         return color

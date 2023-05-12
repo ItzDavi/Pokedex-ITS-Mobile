@@ -1,6 +1,7 @@
 package com.itsmobile.pokedex
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -40,9 +41,11 @@ class PokemonDetailActivity : AppCompatActivity() {
             .add(R.id.fragmentView, LoadingFragment.newInstance())
             .commit()
 
-        getPokemonSpecies("https://pokeapi.co/api/v2/pokemon-species/rayquaza")
+        getPokemonSpecies(intent?.getStringExtra("url") ?: "not found")
 
         binding.info.setOnClickListener {
+            deselectAll()
+            it.alpha = 1.0F
             supportFragmentManager
                 .beginTransaction()
                 .replace(R.id.fragmentView, PokemonDetailFragment.newInstance())
@@ -50,6 +53,8 @@ class PokemonDetailActivity : AppCompatActivity() {
         }
 
         binding.evolution.setOnClickListener {
+            deselectAll()
+            it.alpha = 1.0F
             supportFragmentManager
                 .beginTransaction()
                 .replace(R.id.fragmentView, PokemonEvolutionFragment.newInstance())
@@ -57,6 +62,8 @@ class PokemonDetailActivity : AppCompatActivity() {
         }
 
         binding.location.setOnClickListener {
+            deselectAll()
+            it.alpha = 1.0F
             supportFragmentManager
                 .beginTransaction()
                 .replace(R.id.fragmentView, PokemonLocationFragment.newInstance())
@@ -64,13 +71,20 @@ class PokemonDetailActivity : AppCompatActivity() {
         }
 
         binding.moves.setOnClickListener {
+            deselectAll()
+            it.alpha = 1.0F
             supportFragmentManager
                 .beginTransaction()
                 .replace(R.id.fragmentView, PokemonMovesFragment.newInstance())
                 .commit()
         }
     }
-
+    private fun deselectAll(){
+        binding.moves.alpha = 0.7F
+        binding.info.alpha = 0.7F
+        binding.evolution.alpha = 0.7F
+        binding.location.alpha = 0.7F
+    }
     private fun getPokemonSpecies(url: String){
         val queue = Volley.newRequestQueue(this)
 
@@ -101,6 +115,7 @@ class PokemonDetailActivity : AppCompatActivity() {
                 val pokemon = Gson().fromJson(response.toString(), Pokemon::class.java)
                 viewModel.pokemon.value = pokemon
                 getLocation(response.getString("location_area_encounters"))
+                binding.info.alpha = 1.0F
                 supportFragmentManager
                     .beginTransaction()
                     .replace(R.id.fragmentView, PokemonDetailFragment.newInstance())
