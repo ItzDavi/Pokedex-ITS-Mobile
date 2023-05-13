@@ -113,9 +113,26 @@ class PokemonDetailActivity : AppCompatActivity() {
             null,
             { response ->
                 val pokemon = Gson().fromJson(response.toString(), Pokemon::class.java)
+                val sharedPref = this.getSharedPreferences("myPref", Context.MODE_PRIVATE)
+                var version = sharedPref.getString("version", "")
+                pokemon.movesFilteredByLevel = pokemon.getFilteredMoves("level-up", version ?: "red-blue")
+                pokemon.movesFilteredByMachine = pokemon.getFilteredMoves("machine", version ?: "red-blue")
+                pokemon.movesFilteredByEggs = pokemon.getFilteredMoves("egg", version ?: "red-blue")
+
+                pokemon.movesFilteredByMachine.forEach {
+                    it.move.setMachine(this, "machine", version ?: "")
+                }
+
+                pokemon.movesFilteredByLevel.forEach {
+                    it.move.setMachine(this, "level-up", version ?: "")
+                }
+
+                pokemon.movesFilteredByEggs.forEach {
+                    it.move.setMachine(this, "Egg", version ?: "")
+                }
+
                 viewModel.pokemon.value = pokemon
                 getLocation(response.getString("location_area_encounters"))
-                binding.info.alpha = 1.0F
                 supportFragmentManager
                     .beginTransaction()
                     .replace(R.id.fragmentView, PokemonDetailFragment.newInstance())
@@ -127,7 +144,6 @@ class PokemonDetailActivity : AppCompatActivity() {
         )
         queue.add(jsonRequest)
     }
-
 
     private fun getLocation(url: String){
         val queue = Volley.newRequestQueue(this)

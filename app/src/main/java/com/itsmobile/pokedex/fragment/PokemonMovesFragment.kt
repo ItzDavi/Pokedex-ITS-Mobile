@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -40,28 +41,27 @@ class PokemonMovesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val sharedPref = view.context.getSharedPreferences("myPref", Context.MODE_PRIVATE)
-        var version = sharedPref.getString("version", "")
-
         pokemonModel.pokemon.observe(viewLifecycleOwner){ pokemon ->
+
+
             binding.byLevelRecycler.apply {
-                adapter = MoveAdapter(pokemon.getFilteredMoves("level-up", version ?: ""), "level-up")
+                adapter = MoveAdapter(pokemon.movesFilteredByLevel, "level-up")
                 layoutManager = LinearLayoutManager(requireView().context, LinearLayoutManager.VERTICAL, false)
             }
 
             binding.byMachinesRecycler.apply {
-                adapter = MoveAdapter(pokemon.getFilteredMoves("machine", version ?: ""), "machine")
+                adapter = MoveAdapter(pokemon.movesFilteredByMachine, "machine")
                 layoutManager = LinearLayoutManager(requireView().context, LinearLayoutManager.VERTICAL, false)
             }
 
-            if(pokemon.getFilteredMoves("egg", version ?: "").size > 0){
+            if(pokemon.movesFilteredByEggs.size > 0){
                 binding.byEggsRecycler.apply {
-                    adapter = MoveAdapter(pokemon.getFilteredMoves("egg", version ?: ""), "egg")
+                    adapter = MoveAdapter(pokemon.movesFilteredByEggs, "egg")
                     layoutManager = LinearLayoutManager(requireView().context, LinearLayoutManager.VERTICAL, false)
                 }
             }else{
-                binding.byEggsRecycler.isInvisible = true
-                binding.byEggsTitle.isInvisible = true
+                binding.byEggsRecycler.isGone = true
+                binding.byEggsTitle.isGone = true
             }
         }
     }

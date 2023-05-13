@@ -5,7 +5,12 @@ import com.itsmobile.pokedex.model.Stat
 import com.itsmobile.pokedex.model.Type
 
 class Pokemon(var moves: ArrayList<MoveVersion>, var base_experience: Int, var name: String, var stats: ArrayList<Stat>, val sprites: Sprite, val abilities: ArrayList<Ability>, val weight: Int, val height: Int, val types: ArrayList<TypeOutside>) {
-    private fun filterMovesByGeneration(gameVersion: String) : ArrayList<MoveVersion>{
+
+    var movesFilteredByLevel = ArrayList<MoveVersion>()
+    var movesFilteredByMachine = ArrayList<MoveVersion>()
+    var movesFilteredByEggs = ArrayList<MoveVersion>()
+
+    fun filterMovesByGeneration(gameVersion: String) : ArrayList<MoveVersion>{
 
         var movesFiltered = ArrayList<MoveVersion>()
         moves.let {
@@ -20,9 +25,8 @@ class Pokemon(var moves: ArrayList<MoveVersion>, var base_experience: Int, var n
                     }
                 }
             }
-
-            return movesFiltered
         }
+        return movesFiltered
     }
 
     fun getFilteredMoves(method: String, version: String) : ArrayList<MoveVersion>{

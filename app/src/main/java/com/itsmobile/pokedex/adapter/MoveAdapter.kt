@@ -33,65 +33,14 @@ class MoveAdapter (val moves: ArrayList<MoveVersion>, val howObtain: String) : R
 
         holder.view.findViewById<TextView>(R.id.name).text = move.move.name
 
-        val queue = Volley.newRequestQueue(holder.view.context)
+        holder.view.findViewById<TextView>(R.id.type).text = move.move.type
+        holder.view.findViewById<TextView>(R.id.effect).text = move.move.damage_class
 
-        val jsonRequest = JsonObjectRequest(
-            Request.Method.GET,
-            move.move.url,
-            null,
-            { response ->
-
-                if(response.getJSONObject("damage_class").getString("name") == "physical"){
-                    holder.view.findViewById<TextView>(R.id.effect).text = "PHY"
-                }else{
-                    holder.view.findViewById<TextView>(R.id.effect).text = response.getJSONObject("damage_class").getString("name")
-                }
-
-                holder.view.findViewById<TextView>(R.id.type).text = response.getJSONObject("type").getString("name")
-
-                when(howObtain){
-                    "level-up" -> {
-                        holder.view.findViewById<TextView>(R.id.level).text = "Lv. ${move.version_group_details[0].level_learned_at}"
-                    }
-
-                    "machine" -> {
-
-                        val machines = Gson().fromJson(response.toString(), Machines::class.java)
-
-                        for(machine in machines.machines){
-                            if(machine.version_group.name == "red-blue"){
-                                setMTName(machine.machine.url, holder.view.context, holder.view.findViewById(R.id.level))
-                            }
-                        }
-
-                    }
-
-                    "egg" -> holder.view.findViewById<TextView>(R.id.level).text = "Lv. 1"
-
-                }
-            },
-            { error ->
-                Log.d("errore", error.message.toString())
-            }
-        )
-        queue.add(jsonRequest)
-    }
-
-    private fun setMTName(url: String, context: Context, howObtain: TextView){
-        val queue = Volley.newRequestQueue(context)
-
-        val jsonRequest = JsonObjectRequest(
-            Request.Method.GET,
-            url,
-            null,
-            { response ->
-                howObtain.text = response.getJSONObject("item").getString("name")
-            },
-            { error ->
-                Log.d("errore", error.message.toString())
-            }
-        )
-        queue.add(jsonRequest)
+        when(howObtain){
+            "level-up" -> holder.view.findViewById<TextView>(R.id.level).text = "Lv. ${move.version_group_details[0].level_learned_at}"
+            "machine" -> holder.view.findViewById<TextView>(R.id.level).text = move.move.howObtain
+            "eggs" -> holder.view.findViewById<TextView>(R.id.level).text = "Lv. 1"
+        }
     }
 
     override fun getItemCount(): Int = moves.size

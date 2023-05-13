@@ -15,15 +15,13 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // val (weaknesses, resistances) = TypeCalculator.calculateWeaknessesAndResistances(TypeCalculator.Companion.PokemonType.FIRE, TypeCalculator.Companion.PokemonType.FLYING)
-
         var intent = Intent(this, PokemonDetailActivity::class.java)
-        intent.putExtra("url", "https://pokeapi.co/api/v2/pokemon-species/charmander")
+        intent.putExtra("url", "https://pokeapi.co/api/v2/pokemon-species/chimchar")
         startActivity(intent)
 
         val sharedPref = this.getSharedPreferences("myPref", Context.MODE_PRIVATE)
         val myEdit = sharedPref.edit()
-        myEdit.putString("version", "red-blue")
+        myEdit.putString("version", "platinum")
         myEdit.apply()
 
     }
