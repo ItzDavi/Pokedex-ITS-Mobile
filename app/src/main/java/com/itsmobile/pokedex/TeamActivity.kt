@@ -1,14 +1,14 @@
 package com.itsmobile.pokedex
 
-import android.R
 import android.os.Bundle
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import java.util.Random
-
+import com.itsmobile.pokedex.databinding.ActivityTeamBinding
+import kotlin.random.Random
 
 class TeamActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityTeamBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_team)
