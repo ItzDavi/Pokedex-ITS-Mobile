@@ -11,8 +11,14 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/M"
+        android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"
         tools:targetApi="31">
+        <activity
+            android:name=".UrlActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PokedexActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
