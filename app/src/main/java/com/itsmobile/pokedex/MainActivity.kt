@@ -1,5 +1,6 @@
 package com.itsmobile.pokedex
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,6 +13,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val sharedPref = this.getSharedPreferences("myPref", Context.MODE_PRIVATE)
+        val myEdit = sharedPref.edit()
+        myEdit.putString("version","https://pokeapi.co/api/v2/pokedex/3")
+        myEdit.apply()
 
         val intent = Intent(this, TeamActivity::class.java)
 

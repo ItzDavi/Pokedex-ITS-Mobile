@@ -1,7 +1,9 @@
 package com.itsmobile.pokedex
 
+import android.content.Context
 import android.os.Bundle
 import android.widget.ImageButton
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.itsmobile.pokedex.databinding.ActivityTeamBinding
@@ -13,6 +15,19 @@ class TeamActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityTeamBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val sharedPref = this.getSharedPreferences("myPref", Context.MODE_PRIVATE)
+        var version = sharedPref.getString("version", "")
+        val ver = findViewById<TextView>(R.id.ver)
+        when(version){
+            "https://pokeapi.co/api/v2/pokedex/2"-> ver.text = "I"
+            "https://pokeapi.co/api/v2/pokedex/3" -> ver.text = "II"
+            "https://pokeapi.co/api/v2/pokedex/4" -> ver.text = "III"
+            "https://pokeapi.co/api/v2/pokedex/5" -> ver.text = "IV"
+            "https://pokeapi.co/api/v2/pokedex/8" -> ver.text = "V"
+            "https://pokeapi.co/api/v2/pokedex/12" -> ver.text = "VI"
+            "https://pokeapi.co/api/v2/pokedex/16" -> ver.text = "VII"
+        }
 
         val r = findViewById<ImageButton>(R.id.randomButton)
         r.setOnClickListener {
