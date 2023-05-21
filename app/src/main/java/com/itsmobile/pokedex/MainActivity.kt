@@ -15,6 +15,14 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        /*val sharedPref = this.getSharedPreferences("myPref", Context.MODE_PRIVATE)
+        val myEdit = sharedPref.edit()
+        myEdit.putString("version","https://pokeapi.co/api/v2/pokedex/3")
+        myEdit.apply()*/
+
+        val intent = Intent(this, TeamActivity::class.java)
+        startActivity(intent)
+        
         binding.text.setOnClickListener{
             val intent = Intent(this,VersionActivity::class.java)
             startActivity(intent)
