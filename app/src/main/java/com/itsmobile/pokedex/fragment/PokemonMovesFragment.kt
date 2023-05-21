@@ -1,21 +1,15 @@
 package com.itsmobile.pokedex.fragment
 
-import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isGone
-import androidx.core.view.isInvisible
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.itsmobile.pokedex.R
 import com.itsmobile.pokedex.adapter.MoveAdapter
-import com.itsmobile.pokedex.adapter.StatAdapter
-import com.itsmobile.pokedex.databinding.FragmentPokemonDetailBinding
 import com.itsmobile.pokedex.databinding.FragmentPokemonMovesBinding
-import com.itsmobile.pokedex.model.pokemon.Pokemon
 import com.itsmobile.pokedex.model.pokemon.PokemonViewModel
 
 class PokemonMovesFragment : Fragment() {
@@ -24,16 +18,7 @@ class PokemonMovesFragment : Fragment() {
 
     private val pokemonModel : PokemonViewModel by activityViewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-        }
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentPokemonMovesBinding.inflate(inflater, container, false)
         return binding.root
     }

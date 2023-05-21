@@ -18,26 +18,15 @@ import com.itsmobile.pokedex.databinding.FragmentPokemonDetailBinding
 import com.itsmobile.pokedex.model.Stat
 import com.itsmobile.pokedex.model.pokemon.PokemonViewModel
 import com.itsmobile.pokedex.model.pokemon.StatInside
-import com.itsmobile.pokedex.model.pokemon.TypeOutside
-
 
 class PokemonDetailFragment : Fragment() {
 
-
     private var _binding: FragmentPokemonDetailBinding? = null
-
     private val binding get() = _binding!!
 
     private val pokemonModel : PokemonViewModel by activityViewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentPokemonDetailBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -55,7 +44,7 @@ class PokemonDetailFragment : Fragment() {
             binding.baseExperience.text = pokemon.base_experience.toString()
 
             if(pokemon.stats.size < 7){
-                var tot: Double = 0.0
+                var tot = 0.0
 
                 for(stat in pokemon.stats){
                     tot += stat.base_stat
