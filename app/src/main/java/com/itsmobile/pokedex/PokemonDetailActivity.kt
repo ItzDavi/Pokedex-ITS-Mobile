@@ -41,6 +41,10 @@ class PokemonDetailActivity : AppCompatActivity() {
 
         getPokemonSpecies(intent?.getStringExtra("url") ?: "not found")
 
+        binding.backButton.setOnClickListener {
+            finish()
+        }
+
         binding.info.setOnClickListener {
             deselectAll()
             it.alpha = 1.0F
@@ -111,8 +115,18 @@ class PokemonDetailActivity : AppCompatActivity() {
             null,
             { response ->
                 val pokemon = Gson().fromJson(response.toString(), Pokemon::class.java)
-                val sharedPref = this.getSharedPreferences("myPref", Context.MODE_PRIVATE)
-                val version = sharedPref.getString("version", "")
+                val sharedPref = this.getSharedPreferences("version", Context.MODE_PRIVATE)
+                var version = sharedPref.getString("version", "")
+
+                when(version){
+                    "https://pokeapi.co/api/v2/pokedex/2"-> version = "red-blue"
+                    "https://pokeapi.co/api/v2/pokedex/3" -> version = "gold-silver"
+                    "https://pokeapi.co/api/v2/pokedex/4" -> version = "ruby-sapphire"
+                    "https://pokeapi.co/api/v2/pokedex/5" -> version = "platinum"
+                    "https://pokeapi.co/api/v2/pokedex/8" -> version = "black-white"
+                    "https://pokeapi.co/api/v2/pokedex/12" -> version = "x-y"
+                    "https://pokeapi.co/api/v2/pokedex/16" -> version = "sun-moon"
+                }
 
                 pokemon.movesFilteredByLevel = pokemon.getFilteredMoves("level-up", version ?: "red-blue")
                 pokemon.movesFilteredByMachine = pokemon.getFilteredMoves("machine", version ?: "red-blue")
@@ -153,8 +167,18 @@ class PokemonDetailActivity : AppCompatActivity() {
             null,
             { response ->
 
-                val sharedPref = this.getSharedPreferences("myPref", Context.MODE_PRIVATE)
-                val version = sharedPref.getString("version", "")
+                val sharedPref = this.getSharedPreferences("version", Context.MODE_PRIVATE)
+                var version = sharedPref.getString("version", "")
+
+                when(version){
+                    "https://pokeapi.co/api/v2/pokedex/2" -> version = "red-blue"
+                    "https://pokeapi.co/api/v2/pokedex/3" -> version = "gold-silver"
+                    "https://pokeapi.co/api/v2/pokedex/4" -> version = "ruby-sapphire"
+                    "https://pokeapi.co/api/v2/pokedex/5" -> version = "platinum"
+                    "https://pokeapi.co/api/v2/pokedex/8" -> version = "black-white"
+                    "https://pokeapi.co/api/v2/pokedex/12" -> version = "x-y"
+                    "https://pokeapi.co/api/v2/pokedex/16" -> version = "sun-moon"
+                }
 
                 val locations = version?.let { ver ->
                     Gson().fromJson(response.toString(), Locations::class.java).getLocationFilteredByVersion(ver)
