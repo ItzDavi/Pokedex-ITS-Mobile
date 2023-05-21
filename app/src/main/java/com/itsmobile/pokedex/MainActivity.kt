@@ -14,6 +14,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        
+        /*val sharedPref = this.getSharedPreferences("version", Context.MODE_PRIVATE) //creo la shared
+        val myEdit = sharedPref.edit() // creo l'editor della shared
+        myEdit.putString("version","https://pokeapi.co/api/v2/pokedex/3") //edito la shared
+        myEdit.apply()*/
+        
+        binding.kek.setOnClickListener {
+            val intent  = Intent (this,PokedexActivity::class.java)  //fa comunicare questa Activity(this) e l'altra act (newactivity)
+            startActivity(intent)//avvia l'activity indicata nell'intent
+            //finish()
+        }
 
         /*val sharedPref = this.getSharedPreferences("myPref", Context.MODE_PRIVATE)
         val myEdit = sharedPref.edit()
