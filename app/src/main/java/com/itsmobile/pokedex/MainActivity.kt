@@ -15,14 +15,18 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        var intent = Intent(this, PokemonDetailActivity::class.java)
+        binding.text.setOnClickListener{
+            val intent = Intent(this,VersionActivity::class.java)
+            startActivity(intent)
+        }
+        
+       /* var intent = Intent(this, PokemonDetailActivity::class.java)
         intent.putExtra("url", "https://pokeapi.co/api/v2/pokemon-species/chimchar")
         startActivity(intent)
 
         val sharedPref = this.getSharedPreferences("myPref", Context.MODE_PRIVATE)
         val myEdit = sharedPref.edit()
         myEdit.putString("version", "platinum")
-        myEdit.apply()
-
+        myEdit.apply()*/
     }
 }
