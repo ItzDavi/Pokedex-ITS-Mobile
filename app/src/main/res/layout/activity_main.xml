@@ -24,11 +24,12 @@
         app:layout_constraintBottom_toBottomOf="@+id/view"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <Button
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="22dp"
         android:text="Pokédex"
+        android:fontFamily="@font/poppins_semibold"
         android:textColor="@color/onPrimary"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/view2"
