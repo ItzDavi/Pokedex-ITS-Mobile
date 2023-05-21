@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".VersionActivity">
+    tools:context=".VersionActivity"
+    android:background="@color/white">
 
     <View
         android:id="@+id/topRedBar"
@@ -29,6 +30,7 @@
         android:id="@+id/numVersion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/black"
         app:layout_constraintTop_toTopOf="@id/circle"
         app:layout_constraintBottom_toBottomOf="@id/circle"
         app:layout_constraintStart_toStartOf="@id/circle"
