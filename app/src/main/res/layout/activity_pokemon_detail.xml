@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PokemonDetailActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/primary"
+        android:padding="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/baseline_arrow_back_ios_24" />
+    </LinearLayout>
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:name="com.itsmobile.pokedex.fragment.LoadingFragment"
+        tools:layout="@layout/fragment_loading" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="20dp"
+        android:background="@color/primary">
+        <ImageView
+            android:id="@+id/info"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/baseline_info_24"
+            android:layout_weight="1"
+            />
+        <ImageView
+            android:id="@+id/evolution"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/evolution"
+            android:layout_weight="1"
+            android:alpha="0.7"
+            />
+        <ImageView
+            android:id="@+id/location"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/baseline_location_on_24"
+            android:layout_weight="1"
+            android:alpha="0.7"
+        />
+        <ImageView
+            android:id="@+id/moves"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/moves"
+            android:layout_weight="1"
+            android:alpha="0.7"
+            />
+    </LinearLayout>
+
+</LinearLayout>
