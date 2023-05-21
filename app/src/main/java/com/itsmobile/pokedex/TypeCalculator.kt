@@ -72,8 +72,8 @@ abstract class TypeCalculator {
             val weaknesses = mutableListOf<PokemonType>()
             val resistances = mutableListOf<PokemonType>()
 
-            var type = PokemonType.valueOf(type.uppercase())
-            var type2 = PokemonType.valueOf(type2.uppercase())
+            val type = PokemonType.valueOf(type.uppercase())
+            val type2 = PokemonType.valueOf(type2.uppercase())
 
             // calculate weakness from type1 and type2
             typeWeakness[type]?.forEach {type1Value ->
@@ -142,13 +142,13 @@ abstract class TypeCalculator {
             }
 
 
-            var newWeaknesses = ArrayList<TypeOutside>()
+            val newWeaknesses = ArrayList<TypeOutside>()
 
             weaknesses.forEach { weak ->
                 newWeaknesses.add(TypeOutside(Type(weak.name)))
             }
 
-            var newResistances = ArrayList<TypeOutside>()
+            val newResistances = ArrayList<TypeOutside>()
 
             resistances.forEach { resistance ->
                 newResistances.add(TypeOutside(Type(resistance.name)))
@@ -158,8 +158,8 @@ abstract class TypeCalculator {
         }
 
         fun convertPokemonTypeToTypeOutside(type: String) : Pair<ArrayList<TypeOutside>, ArrayList<TypeOutside>>{
-            var resistances = ArrayList<TypeOutside>()
-            var weaknesses = ArrayList<TypeOutside>()
+            val resistances = ArrayList<TypeOutside>()
+            val weaknesses = ArrayList<TypeOutside>()
 
             typeResistances[PokemonType.valueOf(type.uppercase())]?.forEach {
                 resistances.add(TypeOutside(Type(it.name)))
