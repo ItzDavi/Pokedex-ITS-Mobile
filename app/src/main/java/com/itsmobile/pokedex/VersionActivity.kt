@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.itsmobile.pokedex.model.Version
 
 class VersionActivity : AppCompatActivity() {
