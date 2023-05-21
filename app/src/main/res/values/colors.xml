@@ -10,6 +10,7 @@
 
     <color name="primary">#BA1A20</color>
     <color name="background">#FFFBFF</color>
+    <color name="onBackground">#201A19</color>
     <color name="onPrimary">#FFFFFF</color>
     <color name="tertiaryContainer">#FEDEA6</color>
     <color name="onTertiaryContainer">#261900</color>
