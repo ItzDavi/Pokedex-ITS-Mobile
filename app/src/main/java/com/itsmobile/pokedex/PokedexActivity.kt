@@ -1,11 +1,10 @@
 package com.itsmobile.pokedex
 
+import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -14,22 +13,20 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
 import com.itsmobile.pokedex.model.pokemon.PokemonEntry
-//import com.itsmobile.pokedex.databinding.ActivityMainBinding
-
 import com.itsmobile.pokedex.model.pokemon.PokemonItem
 import com.itsmobile.pokedex.model.pokemon.PokemonSpecies
-import org.intellij.lang.annotations.RegExp
 
 class PokedexActivity : AppCompatActivity() {
-    //private lateinit var binding: ActivityMainBinding
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pokedex)
-        //binding = ActivityMainBinding.inflate(layoutInflater)
-        //setContentView(binding.root)
+
+        window.statusBarColor = getColor(R.color.primary)
+
         val sharedPref = this.getSharedPreferences("version", Context.MODE_PRIVATE) // chiamo la shared pref "version"
-        var version = sharedPref.getString("version", "") // prendo la stringa della shared
+        val version = sharedPref.getString("version", "") // prendo la stringa della shared
+
         val ver = findViewById<TextView>(R.id.ver)
         when(version){
             "https://pokeapi.co/api/v2/pokedex/2"-> ver.text = "I"
@@ -68,7 +65,7 @@ class PokedexActivity : AppCompatActivity() {
                             }
 
                         },
-                        { error ->
+                        { _ ->
 
                         }
 

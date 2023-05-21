@@ -1,34 +1,24 @@
 package com.itsmobile.pokedex.adapter
 
-import android.content.Context
-import android.util.Log
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.android.volley.Request
-import com.android.volley.toolbox.JsonObjectRequest
-import com.android.volley.toolbox.Volley
-import com.google.gson.Gson
 import com.itsmobile.pokedex.R
-import com.itsmobile.pokedex.model.machines.Machines
 import com.itsmobile.pokedex.model.pokemon.MoveVersion
 import kotlin.collections.ArrayList
 
-class MoveAdapter (val moves: ArrayList<MoveVersion>, val howObtain: String) : RecyclerView.Adapter<MoveAdapter.CustomViewHolder>() {
-    class CustomViewHolder(val view: ViewGroup)
-        : RecyclerView.ViewHolder(view)
+class MoveAdapter (private val moves: ArrayList<MoveVersion>, private val howObtain: String) : RecyclerView.Adapter<MoveAdapter.CustomViewHolder>() {
+    class CustomViewHolder(val view: ViewGroup) : RecyclerView.ViewHolder(view)
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): MoveAdapter.CustomViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.view_move, parent, false) as ViewGroup
-        return MoveAdapter.CustomViewHolder(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.view_move, parent, false) as ViewGroup
+        return CustomViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: MoveAdapter.CustomViewHolder, position: Int) {
+    @SuppressLint("SetTextI18n")
+    override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
         val move = moves[position]
 
         holder.view.findViewById<TextView>(R.id.name).text = move.move.name

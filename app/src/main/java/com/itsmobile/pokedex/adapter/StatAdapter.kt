@@ -1,5 +1,6 @@
 package com.itsmobile.pokedex.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,17 +11,14 @@ import com.itsmobile.pokedex.R
 import com.itsmobile.pokedex.model.Stat
 
 class StatAdapter(private val stats: ArrayList<Stat>) : RecyclerView.Adapter<StatAdapter.CustomViewHolder>() {
-    class CustomViewHolder(val view: ViewGroup)
-        : RecyclerView.ViewHolder(view)
+    class CustomViewHolder(val view: ViewGroup) : RecyclerView.ViewHolder(view)
 
-
-    override fun onCreateViewHolder(parent: ViewGroup,
-                                    viewType: Int): CustomViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.view_stat, parent, false) as ViewGroup
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.view_stat, parent, false) as ViewGroup
         return CustomViewHolder(view)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
 
         val stat = stats[position]
@@ -44,8 +42,8 @@ class StatAdapter(private val stats: ArrayList<Stat>) : RecyclerView.Adapter<Sta
             maxStat = 700
         }
 
-        var widthBarOutside = holder.view.findViewById<ConstraintLayout>(R.id.barOutside).layoutParams.width
-        var widthBarInside = ((stat.base_stat / maxStat) * widthBarOutside).toInt() * 3
+        val widthBarOutside = holder.view.findViewById<ConstraintLayout>(R.id.barOutside).layoutParams.width
+        val widthBarInside = ((stat.base_stat / maxStat) * widthBarOutside).toInt() * 3
         holder.view.findViewById<View>(R.id.barInside).layoutParams.width = widthBarInside
 
     }

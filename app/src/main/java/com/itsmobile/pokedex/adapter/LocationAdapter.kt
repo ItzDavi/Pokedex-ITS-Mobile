@@ -5,27 +5,19 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.itsmobile.pokedex.R
-import com.itsmobile.pokedex.model.location.Locations
 import com.itsmobile.pokedex.model.location.LocationsItem
-import java.util.*
 import kotlin.collections.ArrayList
 
-class LocationAdapter(val locations: ArrayList<LocationsItem>): RecyclerView.Adapter<LocationAdapter.CustomViewHolder>() {
-    class CustomViewHolder(val view: ViewGroup)
-        : RecyclerView.ViewHolder(view)
+class LocationAdapter(private val locations: ArrayList<LocationsItem>): RecyclerView.Adapter<LocationAdapter.CustomViewHolder>() {
+    class CustomViewHolder(val view: ViewGroup) : RecyclerView.ViewHolder(view)
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): LocationAdapter.CustomViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.view_location, parent, false) as ViewGroup
-        return LocationAdapter.CustomViewHolder(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.view_location, parent, false) as ViewGroup
+        return CustomViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: LocationAdapter.CustomViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
         val location = locations[position]
         holder.view.findViewById<TextView>(R.id.route).text = location.location_area.name
         holder.view.findViewById<RecyclerView>(R.id.encounterRecycler).apply {

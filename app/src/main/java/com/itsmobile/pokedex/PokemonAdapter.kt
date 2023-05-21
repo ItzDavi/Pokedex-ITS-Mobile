@@ -2,27 +2,20 @@ package com.itsmobile.pokedex
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat.startActivity
-import androidx.core.view.get
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.itsmobile.pokedex.model.pokemon.PokemonEntry
 
 class PokemonAdapter (private val pokemonEntries: ArrayList<PokemonEntry>) : RecyclerView.Adapter<PokemonAdapter.CustomViewHolder>() {
 
-
-
-
-    override fun onCreateViewHolder(parent: ViewGroup,
-                                    viewType: Int): CustomViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.view_pokemon, parent, false) as ViewGroup
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.view_pokemon, parent, false) as ViewGroup
         return CustomViewHolder(view)
     }
 
@@ -35,8 +28,7 @@ class PokemonAdapter (private val pokemonEntries: ArrayList<PokemonEntry>) : Rec
        /* val number = holder.view.findViewById<TextView>(R.id.num)
         number.text = poke.getNumberString()*/
         holder.pokeView.setOnClickListener{
-            Log.d("url",poke.pokemon_species.url)
-            val intent  = Intent (holder.view.context,UrlActivity::class.java)
+            val intent  = Intent (holder.view.context, PokemonDetailActivity::class.java)
             intent.putExtra("url",poke.pokemon_species.url)
             startActivity(holder.view.context, intent, Bundle())
         }
