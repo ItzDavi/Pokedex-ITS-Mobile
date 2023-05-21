@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="74dp"
+    android:height="69dp"
+    android:viewportWidth="74"
+    android:viewportHeight="69">
+    <path
+        android:pathData="M0 34.47c0-9.14 3.63-17.91 10.1-24.37 6.46-6.46 15.23-10.1 24.37-10.1h5.06c9.14 0 17.91 3.63 24.37 10.1 6.46 6.46 10.1 15.23 10.1 24.37v-0.01c0 9.14-3.63 17.91-10.1 24.37-6.46 6.46-15.23 10.1-24.37 10.1h-5.06c-9.14 0-17.91-3.63-24.37-10.1-6.46-6.46-10.1-15.23-10.1-24.37z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:type="linear"
+                android:startX="37"
+                android:startY="33.43"
+                android:endX="37"
+                android:endY="35.93">
+                <item
+                    android:color="#FFFD0808"
+                    android:offset="0.08"/>
+                <item
+                    android:color="#FFFFFFFF"
+                    android:offset="1"/>
+            </gradient>
+        </aapt:attr>
+    </path>
+    <path
+        android:strokeColor="#FF000000"
+        android:strokeWidth="1"
+        android:pathData="M0 35.16h25.9"/>
+    <path
+        android:strokeColor="#FF000000"
+        android:strokeWidth="1"
+        android:pathData="M43.98 35.16H74"/>
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M21.22 34.47c0-7.34 5.95-13.29 13.29-13.29h2.02c7.34 0 13.29 5.95 13.29 13.29v-0.01c0 7.34-5.95 13.29-13.29 13.29h-2.02c-7.34 0-13.29-5.95-13.29-13.29z"/>
+    <path
+        android:strokeColor="#FF000000"
+        android:strokeWidth="1"
+        android:pathData="M21.22 34.47c0-7.34 5.95-13.29 13.29-13.29h2.02c7.34 0 13.29 5.95 13.29 13.29v-0.01c0 7.34-5.95 13.29-13.29 13.29h-2.02c-7.34 0-13.29-5.95-13.29-13.29z"/>
+</vector>
