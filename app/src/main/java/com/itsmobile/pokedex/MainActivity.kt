@@ -19,20 +19,21 @@ class MainActivity : AppCompatActivity() {
         val myEdit = sharedPref.edit() // creo l'editor della shared
         myEdit.putString("version","https://pokeapi.co/api/v2/pokedex/3") //edito la shared
         myEdit.apply()*/
-        
-        binding.kek.setOnClickListener {
-            val intent  = Intent (this,PokedexActivity::class.java)  //fa comunicare questa Activity(this) e l'altra act (newactivity)
-            startActivity(intent)//avvia l'activity indicata nell'intent
-            //finish()
-        }
 
         /*val sharedPref = this.getSharedPreferences("myPref", Context.MODE_PRIVATE)
         val myEdit = sharedPref.edit()
         myEdit.putString("version","https://pokeapi.co/api/v2/pokedex/3")
         myEdit.apply()*/
 
-        val intent = Intent(this, TeamActivity::class.java)
-        startActivity(intent)
+        binding.view4.setOnClickListener {
+            val intent = Intent(this, TeamActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.teamPokeballImageview.setOnClickListener {
+            val intent = Intent(this, TeamActivity::class.java)
+            startActivity(intent)
+        }
         
         binding.text.setOnClickListener{
             val intent = Intent(this,VersionActivity::class.java)
