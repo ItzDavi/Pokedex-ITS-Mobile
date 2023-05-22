@@ -11,7 +11,7 @@ class Locations : ArrayList<LocationsItem>(){
 
         this.forEach{ location ->
             location.version_details.forEach {versionDetail ->
-                if(versionDetail.version.name == versions[0]){
+                if(versionDetail.version.name == versions[0] || versionDetail.version.name == versions[1]){
                     val version = ArrayList<VersionDetail>()
                     version.add(versionDetail)
                     locationsFiltered.add(LocationsItem(location.location_area, version))

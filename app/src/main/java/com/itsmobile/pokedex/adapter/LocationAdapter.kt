@@ -20,6 +20,7 @@ class LocationAdapter(private val locations: ArrayList<LocationsItem>): Recycler
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
         val location = locations[position]
         holder.view.findViewById<TextView>(R.id.route).text = location.location_area.name
+        holder.view.findViewById<TextView>(R.id.version).text = location.version_details[0].version.name
         holder.view.findViewById<RecyclerView>(R.id.encounterRecycler).apply {
             adapter = EncounterAdapter(location.version_details[0].encounter_details)
             layoutManager = LinearLayoutManager(holder.view.context, LinearLayoutManager.VERTICAL, false)
