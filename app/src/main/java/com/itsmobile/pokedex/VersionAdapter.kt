@@ -2,6 +2,7 @@ package com.itsmobile.pokedex
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
@@ -27,10 +28,16 @@ class VersionAdapter (private val versions: ArrayList<Version>) : RecyclerView.A
         holder.itemView.setOnClickListener{
             val sharedPre = holder.itemView.context.getSharedPreferences("version", Context.MODE_PRIVATE)
             sharedPre.edit().putString("version", versions[position].url).apply()
-
             sharedPre.edit().putString("version_num",versions[position].number).apply()
-           (holder.itemView.context as Activity).finish()
+
+            sendBackToActivity(holder)
         }
+    }
+
+    private fun sendBackToActivity(holder: CustomViewHolder) {
+        val activity = (holder.itemView.context as Activity)
+        activity.finish()
+        activity.overridePendingTransition(R.anim.fade_in_anim, R.anim.slide_out_right)
     }
 
 
