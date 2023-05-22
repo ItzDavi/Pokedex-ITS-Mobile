@@ -16,9 +16,9 @@
 
     <View
         android:id="@+id/view2"
-        android:layout_width="50dp"
+        android:layout_width="60dp"
         android:background="@drawable/version"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:layout_marginEnd="22dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/view"
@@ -43,7 +43,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="I"
-        android:textSize="20sp"
+        android:textSize="18sp"
+        android:fontFamily="@font/podkova_semibold"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/view2"
         app:layout_constraintEnd_toEndOf="@+id/view2"
