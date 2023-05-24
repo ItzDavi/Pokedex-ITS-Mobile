@@ -27,9 +27,14 @@ class PokemonLocationFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         locationModel.locations.observe(viewLifecycleOwner){ locations ->
-            binding.locations.apply {
-                adapter = LocationAdapter(locations)
-                layoutManager = LinearLayoutManager(requireView().context, LinearLayoutManager.VERTICAL, false)
+            if(locations.size == 0){
+                binding.isPokemonFindable.visibility = View.VISIBLE
+                binding.locations.visibility = View.GONE
+            }else{
+                binding.locations.apply {
+                    adapter = LocationAdapter(locations)
+                    layoutManager = LinearLayoutManager(requireView().context, LinearLayoutManager.VERTICAL, false)
+                }
             }
         }
     }

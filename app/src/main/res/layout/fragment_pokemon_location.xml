@@ -20,6 +20,15 @@
             android:text="@string/location"
             android:textColor="@color/onBackground"
             android:textSize="24sp" />
+        <TextView
+            android:id="@+id/isPokemonFindable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:visibility="gone"
+            android:text="This pokemon can't be found anywhere"
+            android:textColor="@color/onBackground"
+            android:textSize="18sp" />
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/locations"
             android:nestedScrollingEnabled="false"
